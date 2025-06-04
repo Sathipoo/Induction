@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avinya Sweets - Natural & Healthy Indian Sweets</title>
+    <meta name="description" content="Discover Avinya's handcrafted, diabetic-friendly Indian sweets made with natural ingredients. Perfect for health-conscious sweet lovers.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="https://img.freepik.com/premium-vector/beautiful-sweets-logo_427757-206.jpg?semt=ais_items_boosted&w=740" type="image/x-icon">
+  </head>
+  <body>
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Avinya Sweets</h1>
+            <h2>Naturally Sweet, Naturally Good</h2>
+            <p>Experience the joy of traditional Indian sweets, crafted with nature's finest ingredients</p>
+            <a href="#products"> <button class="cta-button">Shop Now</button></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>Our Sweet Journey</h2>
+            <p>At Avinya, we believe that sweetness shouldn't come at the cost of health. Our mission is to preserve the authentic taste of traditional Indian sweets while making them healthier for everyone. Each piece is handcrafted with care, using natural sweeteners and premium ingredients, ensuring that every bite brings joy without guilt. We take pride in creating sweets that are not just delicious, but also mindful of your well-being.</p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products" id ="products">
+        <div class="container">
+            <h2>Crafted with Care</h2>
+            <div class="product-grid">
+                <!-- Product cards will be added dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>The Avinya Difference</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Natural Ingredients</h3>
+                    <p>Sweetened naturally with stevia and organic honey</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Health Conscious</h3>
+                    <p>Perfect for diabetics and health-mindful individuals</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Quality Assured</h3>
+                    <p>Premium dry fruits and pure desi ghee</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-hands"></i>
+                    <h3>Artisanal Touch</h3>
+                    <p>Handcrafted with traditional methods</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Festive Packs</h3>
+                    <p>Special gift boxes for all occasions</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Fresh Delivery</h3>
+                    <p>Same-day delivery to preserve freshness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Callout -->
+    <section class="subscription">
+        <div class="container">
+            <h2>Sweet Moments, Delivered Monthly</h2>
+            <p>Join our subscription box and receive a curated selection of healthy sweets at your doorstep every month. Perfect for maintaining a balanced lifestyle while enjoying your favorite treats.</p>
+            <button class="cta-button">Start Your Sweet Journey</button>
+        </div>
+    </section>
+
+    <!-- Corporate Orders -->
+    <section class="corporate">
+        <div class="container">
+            <h2>Celebrate Together</h2>
+            <p>Make your corporate gifting meaningful with our customized sweet boxes. Whether it's Diwali, client appreciation, or employee celebrations, we'll help you create the perfect healthy gift experience.</p>
+            <button class="cta-button">Create Your Gift Box</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Mumbai</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> care@avinya.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Our Story</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Health Benefits</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Sweet Box Subscription</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" title="Like us on Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <p class="trust-badge">
+                        <i class="fas fa-check-circle"></i> FSSAI Certified
+                        <i class="fas fa-award"></i> Quality Guaranteed
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Avinya Sweets. Spreading sweetness, naturally.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html> 
