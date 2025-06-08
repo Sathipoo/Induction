@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshith Fresh - Oils</title>
+    <link rel="stylesheet" href="products.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .product-description {
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .page-title {
+            position: relative;
+            padding: 120px 20px; /* Increased padding for more height */
+            margin-bottom: 40px;
+            text-align: center;
+            color: #fff;
+            background-image: url('images/header-bg.jpg');
+            background-image: url('https://assets.clevelandclinic.org/transform/LargeFeatureImage/496eae84-691f-4e90-80fe-aa0827825d97/essentialOils-899747886-770x533-1_jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-radius: 15px;
+            min-height: 500px; /* Added minimum height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            border-radius: 15px;
+        }
+
+        .page-title h1 {
+            position: relative;
+            font-size: 4.5rem; /* Increased font size */
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            z-index: 1;
+            color: #fff; /* Explicitly set white color */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .page-subtitle {
+            position: relative;
+            font-size: 1.4rem; /* Increased font size */
+            margin-top: 20px;
+            color: #fff; /* Explicitly set white color */
+            font-family: 'Poppins', sans-serif;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 1;
+        }
+        
+        .product-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1B5E20;
+            margin: 1.5rem 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .product-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-description strong {
+            color: #1B5E20;
+            font-weight: 600;
+        }
+        
+        .expandable-wrapper {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+            border-radius: 12px;
+            padding: 0 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .product-card.expanded .expandable-content {
+            max-height: 5000px;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+            background: #fff;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .read-more:hover {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .read-more:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(46, 125, 50, 0.3);
+        }
+
+        .product-content {
+            position: relative;
+            padding: 25px;
+            background: #fff;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .product-description ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        .product-description ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .product-description ul li:before {
+            content: "•";
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .product-cta {
+            background: linear-gradient(to right, #E8F5E9, #fff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .product-cta a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .product-cta a:hover {
+            color: #1B5E20;
+            text-decoration: underline;
+        }
+
+        .product-tagline {
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Animation for emoji */
+        h3 strong {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        h3:hover strong {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced hover effect for product cards */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Smooth transition for images */
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Increased from default height */
+            overflow: hidden;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-hover-overlay {
+            opacity: 1;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-hover-text {
+            color: #fff;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-hover-text {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Arshith Fresh</a>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title" style="color: azure;">Oils</h1>
+        <p class="page-subtitle" style="color: green;">Pure, organic, and chemical-free oils for your health</p>
+
+        <div class="products-grid">
+            <!-- 1. Cashews Product Card -->
+            <div class="product-card" data-product="GroundNut Oil">
+                <div class="product-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0772/6869/files/groundnut_oil.jpg
+                    " alt="GroundNut Oil">
+                    <div class="product-hover-overlay">
+                        <h2 class="product-hover-text">GroundNut Oil</h2>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2>GroundNut Oil</h2>
+                    <div class="product-description">
+                        <div class="initial-content">
+                            <p>🥜 <strong>Groundnut Oil That Feels Like It Came from Your Grandmother’s Kitchen —
+                                Only at Arshith Fresh</strong></p>
+                            <p>There’s something so familiar about the smell of groundnut oil hitting a hot pan.
+                                It’s the beginning of a meal, a memory, a moment that feels like home.</p>
+                            <p>At Arshith Fresh, we don’t just make groundnut oil — we revive a tradition.
+                                The kind where seeds are crushed in wooden ghani mills, the oil is filtered without
+                                machines, and the final product is so pure, it speaks for itself without saying a
+                                word.</p>
+                                <p>Come, let us show you how we make real cold-pressed groundnut oil — just like
+                                    the old day.</p>
+                        </div>
+                        
+                        <div class="expandable-wrapper">
+                            <div class="button-container">
+                                <button class="read-more" aria-label="Read more about Cashews">Read More</button>
+                            </div>
+                            
+                            <div class="expandable-content">
+                                <h3>🌱 <strong>It All Starts With the Right Groundnuts</strong></h3>
+                                <p>We source our native groundnuts from trusted farmers who grow them the
+                                    traditional way — seasonally, patiently, and without shortcuts.</p>
+                                <p>These are not hybrid, bulk-produced nuts. <br>
+                                    They are small-batch harvested, carefully sun-dried, and cleaned thoroughly to
+                                    remove any moisture or dirt.</p>
+                                <p>Because we know — if the seed isn’t pure, the oil can never be.</p>
+
+                                <h3>🛢 <strong>Pressed Slowly, Not Rushed</strong></h3>
+                                <p>We use the cold-press (wooden chekku / mara chekku) method — one of the most
+                                    ancient and trusted oil extraction techniques</p>
+                                    <ul>
+                                        <li>The groundnuts are pressed at room temperature, without external heat</li>
+                                        <li>A slow wooden pestle crushes the nuts, allowing oil to seep out naturally</li>
+                                        <li>The process retains the original aroma, taste, color, and nutrients of the nut</li>
+                                    </ul>
+                                <p>This is not “refined” oil. <br>
+                                    This is earthy, golden-brown oil with a slightly nutty fragrance and an honest,
+                                    rustic flavor that enhances everything you cook.</p>
+
+                                <h3>🧂 <strong>No Additions. No Tricks.</strong></h3>
+                                <p>We don’t refine, bleach, or deodorize our oil.</p>
+                                <p>We don’t mix palm oil. <br>
+                                    We don’t treat it with heat or preservatives. <br>
+                                    We don’t filter it to make it “look pretty.”</p>
+                                <p>We just press, rest, hand-filter, and pack it as it is — with all its natural fiber and
+                                    goodness intact.</p>
+
+                                <h3>🍛 <strong> Why We Use It Every Day</strong></h3>
+                                <p>In our homes, groundnut oil is the foundation for everything: </p>
+                                <ul>
+                                    <li>We use it for deep frying – bhajji, poori, and murukku come out perfectly
+                                        crispy and light</li>
+                                    <li>It gives a beautiful nutty aroma to simple dals and poriyals</li>
+                                    <li>It’s excellent for pickles — because it doesn’t go rancid quickly</li>
+                                    <li>Even simple rice with podi and groundnut oil feels like a soulful meal</li>
+                                </ul>
+                                <p>And for elderly people or kids? It’s gentle, nourishing, and loved by all
+                                    generations.</p>
+                                <h3>💚 <strong>Why Your Body Will Thank You for It</strong></h3>
+                                <p>🥜 Rich in Good Fats – Groundnut oil contains monounsaturated fats that promote
+                                    heart health <br>
+                                    🧠 Vitamin E Boost – Supports brain, skin, and hair health <br>
+                                    🔥 Anti-inflammatory – Helps reduce internal inflammation when used regularly
+                                    in cooking  <br>
+                                    🍽 Easy to Digest – Doesn’t leave heaviness or greasiness after meals  <br>
+                                    💪 Energy Sustainer – Great for people with active lifestyles or growing children</p>
+                                    <p>And because we don’t over-process it — all these nutrients stay intact.</p>
+
+                            
+
+                            
+                                <h3>🛒 <strong>Ready to Taste the Difference?</strong></h3>
+                                <p>Whether you're stir-frying veggies, deep-frying snacks, or just mixing your favorite
+                                    podi rice — switch to oil that respects your food and your body.</p>
+                                
+                                <div class="product-cta">
+                                    <p>👉 <a href="https://www.arshithfresh.com" target="_blank" rel="noopener noreferrer">Shop Arshith Fresh Cold-Pressed Groundnut Oil at www.arshithfresh.com </a></p>
+                                    <p>📦 Available in 500ml, 1L, and 5L packs</p>
+                                    <p>📞 Call/WhatsApp us anytime: +91 76010 91611</p>
+                                    <p>📍 Shipped fresh across India</p>
+                                </div>
+
+                                <p>🥜 Arshith Fresh Groundnut Oil – Not Just an Ingredient, A Legacy</p>
+                                <p>Some things can’t be manufactured. <br>
+                                    They have to be crafted — slowly, lovingly, with honesty.</p>
+                                <p>That’s what this oil is.
+                                    It’s what our mothers and grandmothers used — and now, you can too.</p>
+                                <p class="product-tagline"><em>Taste it once.
+                                    And you’ll remember: the best is always inside. </em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Sunflower Oil Product Card -->
+            <div class="product-card" data-product="sunflower-oil">
+                <div class="product-image">
+                    <img src="https://vijayimpex.co.in/wp-content/uploads/2021/05/PID-140270_190518-SunflowerSeedOil-1VI.jpg" alt="Sunflower Oil">
+                    <div class="product-hover-overlay">
+                        <h2 class="product-hover-text">Sunflower Oil</h2>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2>Sunflower Oil</h2>
+                    <div class="product-description">
+                        <div class="initial-content">
+                            <p>🌻 <strong>Pure Sunflower Oil That Speaks of Sunlight, Simplicity & Soul – From Arshith Fresh</strong></p>
+                            <p>In every kitchen, there's an oil that defines the taste of home. For many of us, it's sunflower oil — light on the tongue, gentle on the stomach, and always comforting in a way we can't explain.</p>
+                            <p>But not all sunflower oils are created equal. At Arshith Fresh, we've taken a simple seed and turned it into something pure — without refining, bleaching, or chemical treatment. Just clean, cold-pressed sunflower oil the way it's meant to be.</p>
+                        </div>
+
+                        <div class="expandable-wrapper">
+                            <div class="button-container">
+                                <button class="read-more" aria-label="Read more about Sunflower Oil">Read More</button>
+                            </div>
+
+                            <div class="expandable-content">
+                                <h3>🌻 <strong>It All Begins With the Seed</strong></h3>
+                                <p>Our journey starts in the open sunlit fields of India, where golden yellow sunflowers bloom freely, soaking in the warmth of the sun.</p>
+                                <p>The seeds from these flowers are harvested at peak ripeness, cleaned thoroughly, and never stored for long, so they retain their natural aroma, flavor, and nutrients.</p>
+                                <p>These aren't factory-grade bulk seeds. They are carefully sourced in small batches to ensure every drop of oil we extract has purity at its heart.</p>
+
+                                <h3>🛠 <strong>Cold-Pressed, Not Chemically Refined</strong></h3>
+                                <p>● No external heat</p>
+                                <p>● No solvents</p>
+                                <p>● No refining</p>
+                                <p>● No deodorizing</p>
+                                <p>What you get is unrefined, cold-pressed sunflower oil — light yellow in color, with a soft nutty fragrance and a clean, neutral taste.</p>
+                                <p>This is not just cooking oil — this is a gentle and honest fat that respects your food and your health.</p>
+
+                                <h3>🔄 <strong>What We Don’t Do</strong></h3>
+                                <p>● Add preservatives or anti-foaming agents</p>
+                                <p>● Use high-heat refining that strips away nutrients</p>
+                                <p>● Mix with palm or other low-grade oils</p>
+                                <p>● Bleach or deodorize to "enhance" the look</p>
+                                <p>What you're getting is 100% pure sunflower oil, just as nature intended.</p>
+
+                                <h3>🍳 <strong>Where It Shines in Your Kitchen</strong></h3>
+                                <p>Our cold-pressed sunflower oil is versatile and trustworthy:</p>
+                                <ul>
+                                    <li>Perfect for deep frying — it doesn't leave a greasy aftertaste</li>
+                                    <li>Ideal for daily cooking — dal, sabzi, sambar, pulav</li>
+                                    <li>Beautiful for baking and even salad dressings</li>
+                                    <li>Used in traditional recipes like poori, bajji, or pakoda — where the oil lifts the flavor instead of masking it</li>
+                                </ul>
+                                <p>And it's not just about cooking. Some of our customers even use it on their skin and hair for its lightness and Vitamin E richness.</p>
+
+                                <h3>💚 <strong>Why Sunflower Oil from Arshith Fresh?</strong></h3>
+                                <p>Let's talk about what it does inside your body — not just in your kadhai.</p>
+                                <ul>
+                                    <li>🌞 Heart-Friendly Fats – Naturally rich in polyunsaturated fats and low in saturated fat, which helps maintain good cholesterol levels.</li>
+                                    <li>🧠 Brain & Nerve Health – High in Vitamin E, an antioxidant that supports nerve function and reduces inflammation.</li>
+                                    <li>💪 Energy & Metabolism Support – Cold-pressed sunflower oil helps improve digestion and metabolism when used moderately.</li>
+                                    <li>👶 Safe for Kids – A clean, light oil that's easy on their little tummies and full of nourishment.</li>
+                                    <li>🧽 Skin & Hair – Used externally, it helps moisturize, soften, and rejuvenate.</li>
+                                </ul>
+
+                                <h3>🛒 <strong>Bring the Sunlight Home — in a Bottle</strong></h3>
+                                <p>Whether you're frying a weekend snack, sautéing a curry, or making your child's favorite lunchbox recipe — choose an oil that honors your food.</p>
+                                <p>Choose Arshith Fresh Cold-Pressed Sunflower Oil.</p>
+
+                                <div class="product-cta">
+                                    <p>👉 <a href="https://www.arshithfresh.com" target="_blank" rel="noopener noreferrer">Order now at www.arshithfresh.com</a></p>
+                                    <p>📦 Available in 500ml, 1L, and 5L packs</p>
+                                    <p>📞 For inquiries, call/WhatsApp us: +91 76010 91611</p>
+                                    <p>📍 Shipped fresh across India</p>
+                                </div>
+
+                                <p>🌻 Arshith Fresh Sunflower Oil — The Taste of Lightness, The Touch of Home</p>
+                                <p>We don't just press oil. We preserve what's sacred in food — honesty, balance, and love.</p>
+                                <p>Give it a try, and your food will tell you the difference.</p>
+                                <p class="product-tagline"><em>The best is always inside.</em></p>
+                                <h3>🌰 <strong>Arshith Fresh Almonds – Not Just a Snack. A Smart Habit.</strong></h3>
+                                <p>Because when you begin your day with something pure, your day follows that energy.</p>
+                                <p class="product-tagline"><em>Once you taste the real thing, you'll know: The best is always inside.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sesame Oil Product Card -->
+            <div class="product-card" data-product="sesame-oil">
+                <div class="product-image">
+                    <img src="https://i0.wp.com/ecosureoils.com/wp-content/uploads/2023/05/Black-Sesame-Oil-1.jpg?fit=626%2C417&ssl=1" alt="Sesame Oil">
+                    <div class="product-hover-overlay">
+                        <h2 class="product-hover-text">Sesame Oil</h2>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2>Sesame Oil</h2>
+                    <div class="product-description">
+                        <div class="initial-content">
+                            <p>🌿 <strong>The Oil of Tradition, Strength & Soul — Arshith Fresh</strong></p>
+                            <p>In South Indian kitchens, some things are sacred.</p>
+                            <p>One of them is nuvvula nune — sesame oil. Not just for cooking, but for healing, puja, rituals, pickles, and generations of good health.</p>
+                            <p>Ask any grandmother and she'll say the same:</p>
+                            <p>"If it's sesame oil, it should be thick, strong, and cold-pressed."</p>
+                            <p>That's exactly what we offer at Arshith Fresh — pure, wood-pressed sesame oil, made just the way our elders believed in.</p>
+                        </div>
+
+                        <div class="expandable-wrapper">
+                            <div class="button-container">
+                                <button class="read-more" aria-label="Read more about Sesame Oil">Read More</button>
+                            </div>
+
+                            <div class="expandable-content">
+                                <h3>🌾 <strong>Sourced from Earth, With Gratitude</strong></h3>
+                                <p>It starts with carefully chosen native sesame seeds, grown with care by trusted farmers. These aren't treated or tampered — they're harvested during the right season, dried under the sun, and stored in traditional sacks.</p>
+                                <p>These black or white sesame seeds, rich in oil and aroma, are then cleaned gently to remove dust or debris.</p>
+                                <p>We don't rush.</p>
+                                <p>Because when you respect the seed, the oil respects your health.</p>
+
+                                <h3>🛢 <strong>Wood-Pressed the Traditional Way (Chekku Nune)</strong></h3>
+                                <ul>
+                                    <li>● The sesame seeds are added to the wooden press and rotated slowly</li>
+                                    <li>● No heat. No pressure. Just gentle, rhythmic crushing</li>
+                                    <li>● A small amount of palm jaggery or dry ginger is sometimes added — to balance heat and enhance shelf life (as per tradition)</li>
+                                    <li>● The oil slowly begins to flow — dark golden, thick, and aromatic</li>
+                                </ul>
+                                <p>This process preserves the natural flavor, nutrients, and medicinal qualities of the sesame oil — something no refined oil can offer.</p>
+
+                                <h3>🚫 <strong>No Shortcuts, No Chemicals</strong></h3>
+                                <ul>
+                                    <li>● We don't refine</li>
+                                    <li>● We don't bleach</li>
+                                    <li>● We don't use anti-foaming agents or mix in other oils</li>
+                                </ul>
+                                <p>What you receive is 100% pure sesame oil — thick, earthy, slightly nutty in smell, and deep brown in color (if made from black seeds).</p>
+                                <p>It may not look "factory perfect," but that's because it's real.</p>
+
+                                <h3>🍛 <strong>Why We Use It Daily</strong></h3>
+                                <ul>
+                                    <li>● We use it in pickles — because it keeps flavors intact for months</li>
+                                    <li>● We start meals with a spoon of it in podi rice</li>
+                                    <li>● We pour it for temple-style tamarind rice, puliyodarai, and pulusu</li>
+                                    <li>● We use it to massage babies, elders, and ourselves — to improve circulation and calm the nerves</li>
+                                    <li>● And yes, we light our lamps with it — because it's that sacred</li>
+                                </ul>
+                                <p>This is not just a cooking oil.</p>
+                                <p>It's a healing oil.</p>
+
+                                <h3>💚 <strong>The Health Benefits Are Time-Tested</strong></h3>
+                                <ul>
+                                    <li>🥄 <strong>Heart-Healthy:</strong> Rich in polyunsaturated fats and sesamol — supports heart health and lowers cholesterol.</li>
+                                    <li>🔥 <strong>Balances Body Heat:</strong> Especially in South Indian climates, sesame oil helps in cooling down internal heat.</li>
+                                    <li>🦴 <strong>Strengthens Bones & Joints:</strong> The calcium and magnesium in sesame oil help strengthen bones over time.</li>
+                                    <li>󰩓 <strong>Great for Skin & Hair:</strong> When applied externally, it deeply nourishes dry skin, improves hair shine, and supports scalp health.</li>
+                                    <li>🧠 <strong>Boosts Mood & Memory:</strong> Sesame oil is known in Ayurveda to calm nerves and enhance brain function.</li>
+                                    <li>👶 <strong>Safe for Kids & Elders:</strong> Especially during oil massages — builds strength and immunity from the outside-in.</li>
+                                </ul>
+
+                                <h3>🛒 <strong>Bring This Ancient Oil to Your Modern Kitchen</strong></h3>
+                                <p>Whether you want to cook, pickle, nourish, or heal — Arshith Fresh Cold-Pressed Sesame Oil is your all-in-one traditional companion.</p>
+
+                                <div class="product-cta">
+                                    <p>👉 <a href="https://www.arshithfresh.com" target="_blank" rel="noopener noreferrer">Order now at www.arshithfresh.com</a></p>
+                                    <p>📦 Available in 500ml, 1L, and 5L packs</p>
+                                    <p>📞 For queries or bulk orders: +91 76010 91611</p>
+                                    <p>📍 Shipped across India with love and care</p>
+                                </div>
+
+                                <p>🌿 Arshith Fresh Sesame Oil — More Than Oil. A Legacy.</p>
+                                <p>In every drop, there's strength.</p>
+                                <p>In every bottle, there's trust.</p>
+                                <p>Once you taste and feel it, you'll know — the best is always inside.</p>
+                                <p>🥥 Arshith Fresh Virgin Coconut Oil — Not Processed. Just Loved.</p>
+                                <p>It's not just oil. It's a lifestyle — rooted in simplicity, health, and tradition.</p>
+                                <p>Once you try it, you'll know why we always say…</p>
+                                <p class="product-tagline"><em>The best is always inside.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4. Castor Oil Product Card -->
+            <div class="product-card" data-product="castor-oil">
+                <div class="product-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0772/6869/files/castor_oil.jpg" alt="Castor Oil">
+                    <div class="product-hover-overlay">
+                        <h2 class="product-hover-text">Castor Oil</h2>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2>Castor Oil</h2>
+                    <div class="product-description">
+                        <div class="initial-content">
+                            <p>🌿 <strong>The Oil Our Ancestors Swore By – Arshith Fresh</strong></p>
+                            <p>Long before pharmacies and packaged cosmetics, our grandparents had a remedy for almost everything — castor oil.</p>
+                            <p>For digestion. For hair. For pain relief. For immunity.</p>
+                            <p>They didn't ask why — they just trusted it.</p>
+                        </div>
+                        <div class="expandable-wrapper">
+                            <div class="button-container">
+                                <button class="read-more" aria-label="Read more about Castor Oil">Read More</button>
+                            </div>
+                            <div class="expandable-content">
+                                <h3>🌱 <strong>The Journey Begins with the Ricinus Seed</strong></h3>
+                                <p>Our castor seeds come from native, high-oil-yielding castor plants, grown traditionally in dry regions of India by small farmers.</p>
+                                <p>Once harvested, the seeds are sun-dried — not kiln-dried — to preserve the natural oil inside.</p>
+                                <p>Then comes the process that truly defines Arshith Fresh:</p>
+                                <p>We don't refine, bleach, or treat it with heat.</p>
+                                <p>We go the old-school way.</p>
+                                
+                                <h3>🛢 <strong>Wood-Pressed, Not Factory Processed</strong></h3>
+                                <p>Using the cold-pressed / wooden ghani method, the seeds are crushed slowly, allowing the oil to flow out gradually without losing any of its powerful nutrients.</p>
+                                <ul>
+                                    <li>● No hexane</li>
+                                    <li>● No industrial heat</li>
+                                    <li>● No additives</li>
+                                </ul>
+                                <p>Just pure castor oil, thick, slightly sticky, golden to pale yellow, and filled with the original strength of the seed.</p>
+                                <p>The oil is manually filtered, not over-processed — which means you may even notice a natural scent and texture. That's exactly how it's meant to be.</p>
+                                
+                                <h3>🚫 <strong>No Fragrance. No Dilution. No Nonsense.</strong></h3>
+                                <p>We don't perfume our castor oil to mask its identity.</p>
+                                <p>We don't mix mineral oil or paraffin to make it "lighter."</p>
+                                <p>Why?</p>
+                                <p>Because pure castor oil is not supposed to be light.</p>
+                                <p>It's supposed to work.</p>
+                                
+                                <h3>🧴 <strong>How We Use It in Our Homes</strong></h3>
+                                <ul>
+                                    <li>✔ Hair & Scalp: We mix it with coconut or sesame oil and apply it to the scalp to reduce hair fall, strengthen roots, and cool the head.</li>
+                                    <li>✔ Joint Pain Relief: A warm castor oil massage followed by hot fermentation is a trusted home remedy for knee pain, backaches, and swelling.</li>
+                                    <li>✔ Detox & Digestion: One or two teaspoons with warm water (under guidance) have been traditionally used for colon cleansing and relieving constipation.</li>
+                                    <li>✔ Baby Care: Applied lightly to baby's navel and joints to support bone strength and digestion.</li>
+                                    <li>✔ Cracked Heels & Dry Skin: Night application soothes and heals dry areas faster than any store-bought cream.</li>
+                                    <li>✔ Puja Use: Castor oil is traditionally used in lighting deepams for auspicious rituals.</li>
+                                </ul>
+                                
+                                <h3>💚 <strong>Why Castor Oil is Still a Must-Have</strong></h3>
+                                <ul>
+                                    <li>🌿 Anti-inflammatory – Reduces pain and swelling in joints and muscles</li>
+                                    <li>🧠 Nerve Tonic – Improves circulation and calms the nervous system</li>
+                                    <li>💩 Natural Laxative – Helps clear the stomach and improve digestion</li>
+                                    <li>🌟 Deep Moisturizer – Treats dry skin, cracked heels, and even brittle nails</li>
+                                    <li>🧴 Hair Growth Wonder – Nourishes scalp and strengthens hair strands</li>
+                                    <li>🪔 Spiritually Sacred – Used in temples and homes for sacred lamp lighting</li>
+                                </ul>
+                                
+                                <h3>🛒 <strong>Bring Home the Oil of Wisdom</strong></h3>
+                                <p>This is the oil your elders trusted. Now it's your turn to experience its purity.</p>
+                                
+                                <div class="product-cta">
+                                    <p>👉 <a href="https://www.arshithfresh.com" target="_blank" rel="noopener noreferrer">Order Arshith Fresh Cold-Pressed Castor Oil at www.arshithfresh.com</a></p>
+                                    <p>📦 Available in 250ml, 500ml, and 1L bottles</p>
+                                    <p>📞 Questions? Call/WhatsApp us: +91 76010 91611</p>
+                                    <p>📍 Shipping across India</p>
+                                </div>
+                                
+                                <p class="product-tagline"><em>Arshith Fresh Castor Oil – Old Wisdom in a New Bottle</em></p>
+                                <p>It doesn't come with big claims.</p>
+                                <p>It doesn't come with synthetic labels.</p>
+                                <p>It comes with trust — bottled, sealed, and delivered to your doorstep.</p>
+                                <p>Once you use it, you'll know...</p>
+                                <p>The best is always inside.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 5. Virgin Coconut Oil Product Card -->
+            <div class="product-card" data-product="virgin-coconut-oil">
+                <div class="product-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0772/6869/files/coconut_oil.jpg" alt="Virgin Coconut Oil">
+                    <div class="product-hover-overlay">
+                        <h2 class="product-hover-text">Virgin Coconut Oil</h2>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2>Virgin Coconut Oil</h2>
+                    <div class="product-description">
+                        <div class="initial-content">
+                            <p>🥥 <strong>Arshith Fresh Virgin Coconut Oil — As Pure As Mother’s Love</strong></p>
+                            <p>Close your eyes for a moment and imagine this:</p>
+                            <p>The scent of freshly broken coconuts, the sound of hand-churning, the slow drip of oil from white cream — and the warmth of a mother’s touch applying it to your hair on a Sunday morning.</p>
+                            <p>At Arshith Fresh, our Virgin Coconut Oil is more than just oil.</p>
+                            <p>It’s a gentle memory of simpler times.</p>
+                        </div>
+                        <div class="expandable-wrapper">
+                            <div class="button-container">
+                                <button class="read-more" aria-label="Read more about Virgin Coconut Oil">Read More</button>
+                            </div>
+                            <div class="expandable-content">
+                                <h3>🌴 <strong>Where It All Begins — The Coconut Grove</strong></h3>
+                                <p>We source our coconuts directly from naturally grown groves in South India — where the trees grow tall, the air is salty and clean, and the soil is full of life.</p>
+                                <p>Only mature, fully ripened coconuts are chosen — the kind with thick, white flesh and high oil content.</p>
+                                <p>No immature harvesting. No hybrid shortcuts.</p>
+                                <p>Because real flavor comes from waiting.</p>
+                                
+                                <h3>🥣 <strong>Cold-Processed Without Heat or Refining</strong></h3>
+                                <p>Now, here’s where the magic truly happens.</p>
+                                <p>We extract our Virgin Coconut Oil using the wet-processing method — not by drying the copra or heating it, but by cold-extracting the oil directly from fresh coconut milk.</p>
+                                <p>The Arshith Fresh Process:</p>
+                                <ul>
+                                    <li> Fresh coconut meat is grated and cold-pressed to extract milk</li>
+                                    <li> The milk is left to settle naturally in a clean, cool environment</li>
+                                    <li> Slowly, without any interference, the pure oil separates and rises to the top</li>
+                                    <li> This is scooped, filtered gently, and bottled — untouched by machines or chemicals</li>
+                                </ul>
+                                <p>No heat. No bleach. No deodorizing.</p>
+                                <p>Just pure, raw, unrefined coconut oil, the way nature gives it.</p>
+                                
+                                <h3>🚫 <strong>What You’ll Never Find in Our Bottle</strong></h3>
+                                <ul>
+                                    <li>❌ No preservatives</li>
+                                    <li>❌ No mineral oil or palm oil</li>
+                                    <li>❌ No chemicals or hexane</li>
+                                    <li>❌ No added fragrance — the natural coconut aroma says it all</li>
+                                </ul>
+                                <p>What you will find is a crystal-clear, mild, and naturally aromatic oil that you can eat, apply, or light a lamp with.</p>
+                                
+                                <h3>󰡬 <strong>How We Use It in Our Homes</strong></h3>
+                                <ul>
+                                    <li>✔ Hair Nourishment: Warmed lightly and massaged into the scalp — strengthens roots, reduces dandruff, and gives deep shine.</li>
+                                    <li>✔ Skin Moisturizer: Used as a natural body lotion or baby oil — heals dry skin, cracks, and even stretch marks.</li>
+                                    <li>✔ Cooking Oil: Great for sautéing, making coconut chutneys, or even adding to dosa batter.</li>
+                                    <li>✔ Oil Pulling: A morning ritual — 1 tbsp of virgin coconut oil swished in the mouth for 5 minutes helps detoxify and improve oral health.</li>
+                                    <li>✔ Baby Massage: Safe and gentle on newborn skin — keeps it soft, cool, and rash-free.</li>
+                                    <li>✔ Night Balm: Applied on chapped lips, heels, or under eyes before sleep.</li>
+                                </ul>
+                                
+                                <h3>💚 <strong>Benefits You Can Feel — Inside & Out</strong></h3>
+                                <ul>
+                                    <li>🌟 Anti-bacterial & Anti-fungal – Lauric acid fights germs and soothes infections</li>
+                                    <li>🧠 Brain Booster – Good fats (MCTs) that promote mental clarity and energy</li>
+                                    <li>🔥 Boosts Metabolism – When consumed in moderation, supports weight loss and digestion</li>
+                                    <li>👶 Safe for Babies – Gentle on baby skin and supports early hair growth</li>
+                                    <li>🧴 Beauty Hero – Natural makeup remover, lip balm, hand cream, or pre-shampoo conditioner</li>
+                                </ul>
+                                
+                                <h3>🛒 <strong>Make It a Part of Your Everyday Routine</strong></h3>
+                                <p>Whether you're cooking, oiling your hair, moisturizing your skin, or massaging your baby — you deserve an oil that’s as honest as your intentions.</p>
+                                
+                                <div class="product-cta">
+                                    <p>👉 <a href="https://www.arshithfresh.com" target="_blank" rel="noopener noreferrer">Order Arshith Fresh Virgin Coconut Oil now at www.arshithfresh.com</a></p>
+                                    <p>📦 Available in 250ml, 500ml, and 1L glass or PET bottles</p>
+                                    <p>📞 Call/WhatsApp for assistance or bulk orders: +91 76010 91611</p>
+                                    <p>📍 Freshly packed and delivered across India</p>
+                                </div>
+                                
+                                <p class="product-tagline"><em>Arshith Fresh Virgin Coconut Oil — Not Processed. Just Loved.</em></p>
+                                <p>It’s not just oil. It’s a lifestyle — rooted in simplicity, health, and tradition.</p>
+                                <p>Once you try it, you’ll know why we always say…</p>
+                                <p>The best is always inside.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+                                  
+
+            
+        <p class="product-tagline">Bringing nature's finest to your table</p>
+        <p class="product-closing">For wholesale inquiries and bulk orders, please contact us</p>
+    </div>
+
+    <footer>
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: info@arshithfresh.com</p>
+            <p>Phone: +91 76010 91611</p>
+            <p>Address: 123 Fresh Market Lane, Bangalore - 560001</p>
+        </div>
+        <p class="copyright">© 2024 Arshith Fresh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.product-card');
+                const wrapper = button.closest('.expandable-wrapper');
+                const content = wrapper.querySelector('.expandable-content');
+                const buttonContainer = wrapper.querySelector('.button-container');
+                
+                card.classList.toggle('expanded');
+                
+                if (card.classList.contains('expanded')) {
+                    button.textContent = 'Read Less';
+                    // Move button to bottom of expanded content
+                    content.appendChild(buttonContainer);
+                } else {
+                    button.textContent = 'Read More';
+                    // Move button back to original position
+                    wrapper.insertBefore(buttonContainer, content);
+                }
+                
+                // Smooth scroll to keep content in view
+                setTimeout(() => {
+                    const rect = button.getBoundingClientRect();
+                    const absoluteTop = window.pageYOffset + rect.top - 100;
+                    window.scrollTo({
+                        top: absoluteTop,
+                        behavior: 'smooth'
+                    });
+                }, 100); // Small delay to allow for DOM updates
+            });
+        });
+    </script>
+</body>
+</html> 
